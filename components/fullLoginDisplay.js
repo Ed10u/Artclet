@@ -95,8 +95,8 @@ const WindowAnimationOut = keyframes`
 const MenuWindow = styled.div`
     display:flex;
     height:100%;
-    background-color:  #E7E8D1;
-    width:38%;
+    background: linear-gradient(45deg, #A9F1DF, #FFBBBB);
+    width:100%;
     color:white;
     align-items:center;
     justify-content:center;
@@ -236,32 +236,55 @@ const MenuButtonWrapper = styled.div`
 
 `
 const MenuButtons = styled.a`
-    text-align: center;
-    align-self: stretch;
-    padding-top: 1.5dvh;
-    padding-bottom: 1.5dvh;
-    font-size: 4dvh;
-    font-weight: 500;
-    line-height: 1em;
-    transition: color .2s;
-    text-decoration: none;
-    font-family: Georgia, serif;
-    color:#3f6366;
+position: relative;
+display: inline-block;
+padding: 10px 20px;
+color: black;
+font-size: 1.5em;
+text-align: center;
+text-decoration: none;
+background: white;
+overflow: hidden;
+transition: color 1s, background-color 1s;
+width: 100%;
+z-index: 1;
+border-radius: 10px;
+font-family: 'poppins-bold', sans-serif !important;
+font-weight: bold;
 
-    &:hover{
-        opacity:0.3;
-        transform: scale(1.01);
-    }
+&::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+  transition: left 1s;
+  z-index: -1;
+}
+
+&:hover::before {
+  left: 0;
+}
+
+span {
+  position: relative;
+  z-index: 1;
+}
 `
+
 const MenuButtonsBottom = styled(MenuButtons)`
     font-size:1.3em;
+    width:5%;
 `
 const WebsiteName = styled.a`
-    font-size: 3vw;
+    font-size: 3.2vw;
     font-weight: bold;
-    color: rgb(87,202,195);
-
-    text-decoration:none;
+    background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 `
 const WebName = styled.div`
     font-family: 'poppins-bold', sans-serif !important;
@@ -366,63 +389,20 @@ const FullLoginMenu = ({isVisible, setIsVisible, animationState, setAnimationSta
         <>
         <ContentWrapper className="fullscreen-menu" style={{ display: isVisible ? 'flex' : 'none' }} $animationState={animationState}>
             <WindowWrapper>
-                {
-                    user?(
-                        <RegisterWindow $animationState={animationState}>
-                        <UserLoggedIn>{user.email}</UserLoggedIn>
-                            <ButtonContainer>
-                                <LogoutButton onClick={handleLogout}>
-                                    Logout
-                                </LogoutButton>
-                            </ButtonContainer>
-                        </RegisterWindow>
-                    ):(
-                    <RegisterWindow $animationState={animationState}>
-                    <ButtonContainerRegister style={{ display: RegisterIsVisible ? 'flex' : 'none' }} $animationState={animationState}>
-                        <h1 style={{fontSize:"35px",fontWeight:"bold"}}>Register</h1>
-                        <ContentInput placeholder="Enter your User/Email" onChange={(event)=>{setRegisterEmail(event.target.value)}}/>
-                        <PasswordInput type="password" placeholder="Enter your Password" onChange={(event)=>{setRegisterPassword(event.target.value)}}/>
-                        <ContentButtonRegister onClick={Register}>
-                            Register
-                        </ContentButtonRegister>
-                        <ErrorText>{RegisterErrorMessage}</ErrorText>
-                        <RegisterButton onClick={handleRegister}>Back to Login</RegisterButton>
-                    </ButtonContainerRegister>
-                    <ButtonContainer style={{ display: RegisterIsVisible ? 'none' : 'flex' }} $animationState={animationState}>
-                                <h1 style={{fontSize:"35px",fontWeight:"bold"}}>Login</h1>
-                                    <ContentInput placeholder="Enter your User/Email" onChange={(event) => setLoginEmail(event.target.value)}/>
-                                    <PasswordInput type="password" placeholder="Enter your Password" onChange={(event) => setLoginPassword(event.target.value)}/>
-                                    <ContentButtonLogin onClick={LoginButton}>
-                                        Login
-                                    </ContentButtonLogin>
-                                <ErrorText>{LoginErrorMessage}</ErrorText>
-                                <RegisterButton onClick={handleRegister}>Register</RegisterButton>
-                    </ButtonContainer>
-                </RegisterWindow>
-                )
-                }
-                        <LoginWindow $animationState={animationState}>
-                        </LoginWindow>
                 <MenuWindow $animationState={animationState}>
                     <ExitMenuWrapper>
                     <ExitMenu onClick={handleClose}>X</ExitMenu>
                     </ExitMenuWrapper>
                     <MenuButtonWrapper>
                         <WebName>
-                             <WebsiteName href="/">GenoDo</WebsiteName>
+                             <WebsiteName href="/">Artclet</WebsiteName>
                         </WebName>
                         <MenuButtons href = "/">
-                            Home
-                        </MenuButtons>
-                        <MenuButtons href = "/searchPage">
-                            Search
-                        </MenuButtons>
-                        <MenuButtons href = "/searchHistory">
-                            Search History
+                            Connect to your wallet
                         </MenuButtons>
                     </MenuButtonWrapper>
                     <ButtomInfoWrapper>
-                        <MenuButtonsBottom href = "/searchPage">
+                        <MenuButtonsBottom href = "/contact">
                             Contact
                         </MenuButtonsBottom>
                         <MenuButtonsBottom href = "/about">

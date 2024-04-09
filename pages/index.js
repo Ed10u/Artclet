@@ -6,14 +6,12 @@ import React,{useEffect,useState} from 'react';
 import {useRouter} from 'next/router';
 import {useScrollValue} from '@/components/customHook/scrollValue'
 import Display from '@/components/fullLoginDisplay';
+import Mainstore from '@/components/MainStore';
 
 
 export default function index() {
   const router = useRouter();
   const ValueOfScroll = useScrollValue();
-  const Register= async ()=>{
-      router.push('/searchPage')
-  };
   
   return (
     <>
@@ -21,31 +19,26 @@ export default function index() {
         <Navbar />
         <Display/>
         <HomePageContainer>
-          <VideoBackground $ValueOfScroll={ValueOfScroll} autoPlay muted loop>
+          <Background $ValueOfScroll={ValueOfScroll} autoPlay muted loop>
             <source src = './BackGdVideo.mp4' type="video/mp4"/>
-          </VideoBackground>
+          </Background>
         <ContentContainer $ValueOfScroll={ValueOfScroll}>
           <TextContainer $ValueOfScroll={ValueOfScroll}>
-           <Content>Explore health with a click</Content>
+           <Content>A Universe of Digital Goods at Your Fingertips</Content>
            </TextContainer>
            <TextContainer2 $ValueOfScroll={ValueOfScroll}>
-           <Content2>Mapping diseases in a glance.</Content2>
+           <Content2>Trade Anytime, Anywhere, Any Digital</Content2>
            </TextContainer2>
-           <ButtonContainer $ValueOfScroll={ValueOfScroll}>
-            <ContentInput placeholder="Enter the disease name"/>
-            <ContentButton onClick={Register}>
-                Search
-            </ContentButton>
-           </ButtonContainer>
         </ContentContainer>
         </HomePageContainer>
+        <Mainstore/>
         <Footer />
-        
+
     </>
   )
   }
 
-const VideoBackground = styled.video.attrs(props => ({
+const Background = styled.video.attrs(props => ({
     style: {
       opacity: 1 - 0.01 * Math.min(props.$ValueOfScroll, 98) * 100 / 98,
     }
@@ -81,8 +74,8 @@ const HomePageContainer = styled.div`
     overflow:hidden;
 
     width: 90.9vw;
-    height: 49vw;
-    background-color: #f4fbfb;
+    height: 100vh;
+    background:#bfe9ff;
 
     padding-bottom: 2vw;
     padding-right: 4vw;
@@ -125,12 +118,14 @@ const TextContainer2 = styled.div`
     }};
 `
 const Content = styled.div`
-    font-size: 5em;
+    font-size: 4em;
     font-weight:bold;    
     padding-bottom:1vw;
     opacity:0;
-    color: white;
+    color: #ff6e7f;
     width:100%;
+    align-items:center;
+    text-align:center;
 
     animation: ${SlideContent} 1s ease-in-out;
     animation-duration:2s;

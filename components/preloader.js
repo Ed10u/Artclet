@@ -45,45 +45,77 @@ const SlideIcon = keyframes`
         transform:translate3d(0,71vh,0) rotateX(-30deg);
     };
 `;
+const slideInFromBottom = keyframes`
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`
+const PreloaderText = styled.text`
+    font-family: 'poppins-bold', sans-serif !important;
+    background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    font-size: 8vw;
+    overflow:hidden;
+    Opacity:0;
 
-const PreloaderText = styled.div`
-    font-family:'Poppins', sans-serif;
-    font-weight:bold;
-    font-size:6vw;
-    
-    position:absolute;
-    color:white;
-    -webkit-text-stroke: 0.2vw rgb(87,202,195);
-    
-    &:before{
-        content: attr(data-text);
-        position:absolute;
-        height:100%;
-        width:0;
-        color:rgb(87,202,195);
-        -webkit-text-stroke: 0.1vw rgb(87,202,195);
-        border-right: 5px solid rgb(87,202,195);
-        overflow:hidden;
-        animation:${TypingEffect} 1s linear;
-        animation-fill-mode:forwards;
+    animation: ${slideInFromBottom} 1s ease-out forwards;
 
-    }
-    animation:${SlideIcon} 0.56s linear forwards 1.5s;
-
-    
-`;
-
-
+    `
+const PreloaderText1 = styled(PreloaderText)`
+    animation-delay:0.1s;
+`
+const PreloaderText2 = styled(PreloaderText)`
+    animation-delay:0.2s;
+`
+const PreloaderText3 = styled(PreloaderText)`
+    animation-delay:0.3s;
+`
+const PreloaderText4 = styled(PreloaderText)`
+    animation-delay:0.4s;
+`
+const PreloaderText5 = styled(PreloaderText)`
+    animation-delay:0.5s;
+`
+const PreloaderText6 = styled(PreloaderText)`
+    animation-delay:0.6s;
+`
 
 const Preloader = () => {
     
     return(
         <>
         <PreloaderContainer>
-            <PreloaderText data-text="GenoDo">
-                GenoDo
+            <PreloaderText>
+                A
             </PreloaderText>
+            <PreloaderText1>
+                r
+            </PreloaderText1>
+            <PreloaderText2>
+                t
+            </PreloaderText2>
+            <PreloaderText3>
+                c
+            </PreloaderText3>
+            <PreloaderText4>
+                l
+            </PreloaderText4>
+            <PreloaderText5>
+                e
+            </PreloaderText5>
+            <PreloaderText6>
+                t
+            </PreloaderText6>
         </PreloaderContainer>
         </>
     )

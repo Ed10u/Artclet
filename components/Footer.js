@@ -9,12 +9,10 @@ const Footer = () => {
   return (
     <>
     <Container $ValueOfScroll = {ValueOfScroll}>
-        <Icon src='./icon.png'></Icon>
-        <WebsiteName>GenoDo</WebsiteName>
+        <WebsiteName>Artclet</WebsiteName>
         <NavigationButtonContainer>
             <Navigator href="/">Home</Navigator>
             <Navigator href = "/about">About</Navigator>
-            <Navigator href = "/login">Login</Navigator>
         </NavigationButtonContainer>
     </Container>
     </>
@@ -46,7 +44,10 @@ const Container = styled.div`
 const WebsiteName = styled.div`
     font-size: 2.2vw;
     font-weight: bold;
-    color: rgb(87,202,195);
+    background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     align-self:center;
     padding-top:35px;
 `
@@ -63,7 +64,7 @@ const Navigator = styled.a`
     font-weight: bold;
     padding-top:50px;
     padding-bottom:40px;
-    color: #79D4FF;
+    color: #ff6e7f;
     cursor: pointer;
     transition: 0.3s ease-in-out;
     text-decoration:none;

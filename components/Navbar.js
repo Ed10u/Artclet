@@ -47,8 +47,6 @@ const Navbar = () => {
         </WebName>
         <ContentInput placeholder="Search"/>
         <NavigationButtonContainer>
-            <Navigator onClick={handleHomeButton}>Home</Navigator>
-            <Navigator onClick={handleAboutButton}>About</Navigator>
             <LoginContainer>
                 <Login onClick={()=>{setIsVisible(true);setAnimationState('in');}}>{loggedUser}</Login>
             </LoginContainer> 
@@ -61,11 +59,11 @@ const Navbar = () => {
 }
 
 const ContentInput = styled.input`
-    width:40%;
+    width:50%;
     height:2.5rem;
-    background-color:lightgrey;
+    background-color:#FAFAFA;
     border:none;
-    border-radius:6px;/* make the boarder round*/
+    border-radius:6px;/ make the boarder round*/
     font-size:17px;
     padding-left:15px;
 
@@ -100,7 +98,7 @@ const Container = styled.div`
     position:sticky;
     top:0;
     z-index:10;
-    gap: 10vw;
+    gap: 20vw;
 
     display: flex;
     justify-content: space-between;
@@ -130,14 +128,11 @@ const WebsiteName = styled.a`
 `
 
 const NavigationButtonContainer = styled.div`
-    width:30%;
+    width:20%;
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     background-color: white;
-    padding-top:0.75vw;
     translate: 0 cal(-1%*(max(var(--scroll),25)-25)*100/75);
-
 
     `;
 
@@ -147,6 +142,7 @@ const Navigator = styled.button`
     color: white;
     text-decoration:none;
     background-color:#ff6e7f;
+    align-items: center;
 
     cursor: pointer;
     text-decoration:none;
